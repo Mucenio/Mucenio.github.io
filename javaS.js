@@ -36,7 +36,7 @@ let array_Bg_Day_Snow = ["../img/day/snow/Dsnow1.mp4", "../img/day/snow/Dsnow2.m
 
 
 let array_Bg_Night_Clear = "../img/night/clear/Nclear1.mp4";
-let array_Bg_Night_Cloud = ['../img/night/cloud/ncloud1.mp4'];
+let array_Bg_Night_Cloud = ['../img/night/cloud/Ncloud1.mp4'];
 let array_Bg_Night_Rain = ["../img/night/rain/Nrain1.mp4"];
 let array_Bg_Night_Snow = ["../img/night/snow/Nsnow1.mp4", "../img/night/snow/Nsnow2.mp4"]
 
