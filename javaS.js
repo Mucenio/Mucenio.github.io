@@ -72,7 +72,7 @@ if(navigator.geolocation){
 }else{
 
 
-    console.log("permision denegated")
+    console.log("permision denegated");
 
 
 
