@@ -1,3 +1,5 @@
+
+
 *{
     border: 0;
     margin: 0;
@@ -169,3 +171,14 @@ section #form .search_Box #search_Input:focus ~ span{
 }
 
 
+
+
+
+@media (max-width:600px) {
+    .caja1{
+        width: 90%;
+    }
+    section #form .search_Box{
+        width: 80%;
+    }
+}

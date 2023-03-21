@@ -1,12 +1,13 @@
 //herramientas
 let i=0;
-let textColorSun = "#000";
+let textColorSun = "#06s2c69";
 let textColorCloud = "#8edee9";
 let bgColorCloud = "#615F5D";
 let bgClear = "#8edee9";
 
 let input = document.getElementById('search_Input');
 let form = document.getElementById('form');
+let caja1 = document.getElementById('caja1');
 
 //datos para la API
 const api = {
@@ -53,7 +54,7 @@ function addZero(i) {
 }
 
 
-if(navigator.geolocation){
+if(!navigator.geolocation){
     //obtener la posicion del usuario
     navigator.geolocation.getCurrentPosition( posicion => {
         lon = posicion.coords.longitude
@@ -77,6 +78,7 @@ function card(data){
     temperatura_Valor.textContent = Math.round(data.main.temp) + "°C";
     temperatura_Descripcion.textContent = data.weather[0].main;
     vel_Viento.textContent = data.wind.speed;
+    vel_Viento.textContent += "Humedad " + data.main.humidity;
     ubicacion.textContent = data.name;
     iconoAnimado.src = `${icono}`;
     //datos pasa saber la zona horaria del lugar que se desea buscar
@@ -97,17 +99,23 @@ function bgWeather(data, h){
             case 'Clear':
                 video_Box.src = array_Bg_Day_Clear;
                 input.style.borderBottom = "1px solid" +  textColorSun;
+                console.log(video_Box.src);
                 break;
             case 'Clouds':
                 video_Box.src = array_Bg_Day_Cloud[ Math.round( Math.random() * ( array_Bg_Day_Cloud.length  - 1 ) )]; //Math.round(Math.random() * array_Bg_Day_Cloud.length) 
                 input.style.borderBottom = "1px solid " + textColorSun + "";
+                document.body.style.color = textColorCloud;
+                input.style.color = textColorCloud;
+                console.log(video_Box.src);
                 break;
             case 'Rain':    
                 video_Box.src = array_Bg_Day_Rain[ Math.round( Math.random() * ( array_Bg_Day_Cloud.length  - 1 ) )];
                 input.style.borderBottom = "1px solid" +  textColorSun;
+                console.log(video_Box.src);
                 break;
             case 'Snow':
                 video_Box.src = array_Bg_Day_Snow[ Math.round( Math.random() * ( array_Bg_Day_Snow.length  - 1 ) )];
+                console.log(video_Box.src);
                 break;
             default:
                 console.log("error BG");
@@ -123,23 +131,35 @@ function bgWeather(data, h){
                 input.style.borderBottom = "1px solid" +  textColorCloud;
                 document.body.style.color = textColorCloud;
                 input.style.color = textColorCloud;
+                console.log(video_Box.src);
+                caja1.style["boxShadow"] = `0 0px 10px 1px ${textColorCloud},
+                                            0 0px 10px 1px ${textColorCloud}`;
                 break;
             case 'Clouds':
                 video_Box.src = array_Bg_Night_Cloud; //Math.round(Math.random() * array_Bg_Day_Cloud.length) 
                 input.style.borderBottom = "1px solid " + textColorCloud + "";
                 document.body.style.color = textColorCloud;
                 input.style.color = textColorCloud;
+                console.log(video_Box.src);
+                caja1.style["boxShadow"] = `0 0px 10px 1px ${textColorCloud},
+                                            0 0px 10px 1px ${textColorCloud}`;
                 break;
             case 'Rain':    
                 video_Box.src = array_Bg_Night_Rain;
                 input.style.borderBottom = "1px solid" +  textColorCloud;
                 document.body.style.color = textColorCloud;
                 input.style.color = textColorCloud;
+                console.log(video_Box.src);
+                caja1.style["boxShadow"] = `0 0px 10px 1px ${textColorCloud},
+                                            0 0px 10px 1px ${textColorCloud}`;
                 break;
             case 'Snow':
                 video_Box.src = array_Bg_Night_Snow[ Math.round( Math.random() * ( array_Bg_Night_Snow.length  - 1 ) )];
                 document.body.style.color = textColorCloud;
                 input.style.color = textColorCloud;
+                console.log(video_Box.src);
+                caja1.style["boxShadow"] = `0 0px 10px 1px ${textColorCloud},
+                                            0 0px 10px 1px ${textColorCloud}`;
                 break;
             default:
                 console.log("error BG");
