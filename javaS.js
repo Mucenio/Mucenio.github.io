@@ -56,9 +56,9 @@ function addZero(i) {
 
 if(navigator.geolocation){
     //obtener la posicion del usuario
-    navigator.geolocation.getCurrentPosition( position => {
-        lon = position.coords.longitude
-        lat = position.coords.latitude
+    navigator.geolocation.getCurrentPosition( posicion => {
+        lon = posicion.coords.longitude
+        lat = posicion.coords.latitude
         const url1 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&units=metric&lon=${lon}&appid=7576f73fd61387e1eef1dd6420dbbdb0`;
         fetch(url1)
         .then( response =>{return response.json()})
@@ -69,20 +69,29 @@ if(navigator.geolocation){
             bgWeather(data, offset);
         })
     })
-}else{
+
+    navigator.permissions.query({name:"geolocation"})
+    .then((result) => {
+        console.log(result)
+        console.log(result.state)
+        if(result.state === "denied"){
+            alert("please allow the ubication permission for better experiense")
+        }
+    })
 
 
-    console.log("permision denegated");
 
-
-
+}else if(navigator.permissions.query({name:"geolocation"})){
+    navigator.permissions.query({name:"geolocation"})
+    .then((result) => {
+        console.log(result)
+    })
 }
 
 
-
-
-
-
+function position(){
+    console.log("active ubication permision for better experience");
+}
 
 
 
